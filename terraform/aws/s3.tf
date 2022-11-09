@@ -39,6 +39,18 @@ resource "aws_s3_bucket" "financials_log_bucket" {
   bucket = "financials-log-bucket"
 }
 
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "financials_log_bucket" {
+  bucket = aws_s3_bucket.financials_log_bucket.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "AES256"
+    }
+  }
+}
+
+
 resource "aws_s3_bucket_logging" "financials" {
   bucket = aws_s3_bucket.financials.id
 
