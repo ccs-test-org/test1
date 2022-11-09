@@ -35,7 +35,6 @@ resource "aws_s3_bucket" "financials" {
   }
 }
 
-
 resource "aws_s3_bucket" "financials_log_bucket" {
   bucket = "financials-log-bucket"
 }
@@ -82,7 +81,7 @@ resource "aws_s3_bucket" "data_science" {
 }
 
 resource "aws_s3_bucket" "logs" {
-  #checkov:skip=CKV_AWS_18:AWS Access logging not enabled on S3 buckets
+  #checkov:skip=CKV_AWS_20:AWS Access logging not enabled on S3 buckets
   bucket = "${local.resource_prefix.value}-logs"
   acl    = "log-delivery-write"
   versioning {
