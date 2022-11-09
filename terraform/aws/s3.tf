@@ -6,7 +6,8 @@ resource "aws_s3_bucket" "data" {
   bucket        = "${local.resource_prefix.value}-data"
   force_destroy = true
   tags = {
-    env = "prod"
+    Name        = "data"
+    env         = "prod"
     cost-center = "11010"
   }
 }
@@ -16,7 +17,7 @@ resource "aws_s3_bucket_object" "data_object" {
   key    = "customer-master.xlsx"
   source = "resources/customer-master.xlsx"
   tags = {
-    env = "prod"
+    env         = "prod"
     cost-center = "11010"
   }
 }
@@ -29,7 +30,7 @@ resource "aws_s3_bucket" "financials" {
   acl           = "private"
   force_destroy = true
   tags = {
-    env = "prod"
+    env         = "prod"
     cost-center = "11010"
   }
 }
@@ -44,7 +45,7 @@ resource "aws_s3_bucket" "operations" {
   }
   force_destroy = true
   tags = {
-    env = "prod"
+    env         = "prod"
     cost-center = "11010"
   }
 }
@@ -57,13 +58,13 @@ resource "aws_s3_bucket" "data_science" {
     enabled = true
   }
   logging {
-    target_bucket = "${aws_s3_bucket.logs.id}"
+    target_bucket = aws_s3_bucket.logs.id
     target_prefix = "log/"
   }
   force_destroy = true
   tags = {
-    env = "prod"cost-center = "11010"
-cost-center = "11010"
+    env         = "prod"
+    cost-center = "11010"
   }
 }
 
@@ -78,13 +79,14 @@ resource "aws_s3_bucket" "logs" {
     rule {
       apply_server_side_encryption_by_default {
         sse_algorithm     = "aws:kms"
-        kms_master_key_id = "${aws_kms_key.logs_key.arn}"
+        kms_master_key_id = aws_kms_key.logs_key.arn
       }
     }
   }
   force_destroy = true
   tags = {
-    env = "prod"
+    env         = "prod"
     cost-center = "11010"
+    funct       = "logging"
   }
 }

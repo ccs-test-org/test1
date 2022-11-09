@@ -17,19 +17,19 @@ resource "aws_iam_role" "iam_for_lambda" {
 }
 EOF
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "55010"
   }
 }
 
 resource "aws_lambda_function" "analysis_lambda" {
   # lambda have plain text secrets in environment variables
-  filename      = "resources/lambda_function_payload.zip"
-  function_name = "${local.resource_prefix.value}-analysis"
-  role          = "${aws_iam_role.iam_for_lambda.arn}"
-  handler       = "exports.test"
-  source_code_hash = "${filebase64sha256("resources/lambda_function_payload.zip")}"
-  runtime = "nodejs12.x"
+  filename         = "resources/lambda_function_payload.zip"
+  function_name    = "${local.resource_prefix.value}-analysis"
+  role             = aws_iam_role.iam_for_lambda.arn
+  handler          = "exports.test"
+  source_code_hash = filebase64sha256("resources/lambda_function_payload.zip")
+  runtime          = "nodejs12.x"
   environment {
     variables = {
       access_key = "AKIAIOSFODNN7EXAMPLE"
@@ -37,7 +37,7 @@ resource "aws_lambda_function" "analysis_lambda" {
     }
   }
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "55010"
   }
 }

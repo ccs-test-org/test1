@@ -1,11 +1,11 @@
 resource "aws_instance" "web_host" {
   # ec2 have plain text secrets in user data
-  ami           = "${var.ami}"
+  ami           = var.ami
   instance_type = "t2.nano"
 
   vpc_security_group_ids = [
   "${aws_security_group.web-node.id}"]
-  subnet_id = "${aws_subnet.web_subnet.id}"
+  subnet_id = aws_subnet.web_subnet.id
   user_data = <<EOF
 #! /bin/bash
 sudo apt-get update
@@ -18,7 +18,7 @@ export AWS_DEFAULT_REGION=us-west-2
 echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
 EOF
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -29,25 +29,25 @@ resource "aws_ebs_volume" "web_host_storage" {
   #encrypted         = false  # Setting this causes the volume to be recreated on apply 
   size = 1
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
 
 resource "aws_ebs_snapshot" "example_snapshot" {
   # ebs snapshot without encryption
-  volume_id   = "${aws_ebs_volume.web_host_storage.id}"
+  volume_id   = aws_ebs_volume.web_host_storage.id
   description = "${local.resource_prefix.value}-ebs-snapshot"
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
 
 resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdh"
-  volume_id   = "${aws_ebs_volume.web_host_storage.id}"
-  instance_id = "${aws_instance.web_host.id}"
+  volume_id   = aws_ebs_volume.web_host_storage.id
+  instance_id = aws_instance.web_host.id
 }
 
 resource "aws_security_group" "web-node" {
@@ -79,7 +79,7 @@ resource "aws_security_group" "web-node" {
   }
   depends_on = [aws_vpc.web_vpc]
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -89,7 +89,7 @@ resource "aws_vpc" "web_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -100,7 +100,7 @@ resource "aws_subnet" "web_subnet" {
   availability_zone       = "${var.region}a"
   map_public_ip_on_launch = true
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -111,7 +111,7 @@ resource "aws_subnet" "web_subnet2" {
   availability_zone       = "${var.region}b"
   map_public_ip_on_launch = true
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -120,7 +120,7 @@ resource "aws_subnet" "web_subnet2" {
 resource "aws_internet_gateway" "web_igw" {
   vpc_id = aws_vpc.web_vpc.id
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -128,7 +128,7 @@ resource "aws_internet_gateway" "web_igw" {
 resource "aws_route_table" "web_rtb" {
   vpc_id = aws_vpc.web_vpc.id
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -157,7 +157,7 @@ resource "aws_network_interface" "web-eni" {
   subnet_id   = aws_subnet.web_subnet.id
   private_ips = ["172.16.10.100"]
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
@@ -177,7 +177,7 @@ resource "aws_s3_bucket" "flowbucket" {
   bucket        = "${local.resource_prefix.value}-flowlogs"
   force_destroy = true
   tags = {
-    env = "dev"
+    env         = "dev"
     cost-center = "44010"
   }
 }
