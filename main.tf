@@ -1,6 +1,9 @@
 resource "azurerm_resource_group" "ccs_test1" {
   name     = "ccs_test1"
   location = "West Europe"
+  tags = {
+    yor_trace = "849a930f-12cb-44bd-afb8-10974116632b"
+  }
 }
 
 resource "azurerm_virtual_network" "ccs_test1_vnet1" {
@@ -21,6 +24,7 @@ resource "azurerm_virtual_network" "ccs_test1_vnet1" {
   tags = {
     environment = "Testing"
     owner       = "tplisson"
+    yor_trace   = "0c7a6f75-d049-47b0-b401-1dbb50d1b813"
   }
 }
 
@@ -33,6 +37,7 @@ resource "azurerm_virtual_network" "ccs_test1_vnet2" {
   tags = {
     environment = "Testing"
     owner       = "tplisson"
+    yor_trace   = "5a0f2656-da85-44cf-891d-e26b2bd29e68"
   }
 }
 
@@ -51,5 +56,8 @@ resource "azurerm_network_security_group" "ccs_test1_nsg1" {
     destination_port_range     = "*"
     source_address_prefix      = "*"
     destination_address_prefix = "*"
+  }
+  tags = {
+    yor_trace = "f9fa9d6a-bca3-4779-b3ae-19409494caf1"
   }
 }
