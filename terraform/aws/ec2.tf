@@ -20,6 +20,7 @@ EOF
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "f865e73d-a5a0-434f-8f46-0ba526a969ed"
   }
 }
 
@@ -31,6 +32,7 @@ resource "aws_ebs_volume" "web_host_storage" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "c5a5b9ca-ad75-46c7-8f65-862764943d0b"
   }
 }
 
@@ -41,6 +43,7 @@ resource "aws_ebs_snapshot" "example_snapshot" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "554fd5af-976c-478d-9563-8913607600d6"
   }
 }
 
@@ -81,6 +84,7 @@ resource "aws_security_group" "web-node" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "ebb4ae30-14cf-4650-97de-dd57d52a5170"
   }
 }
 
@@ -91,6 +95,7 @@ resource "aws_vpc" "web_vpc" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "63f14223-5ebf-4e6b-94ec-0549da4882a0"
   }
 }
 
@@ -102,6 +107,7 @@ resource "aws_subnet" "web_subnet" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "df406878-5922-4476-8d98-75eea59c538d"
   }
 }
 
@@ -113,6 +119,7 @@ resource "aws_subnet" "web_subnet2" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "d7f51e01-c6f6-425d-9de4-23092f2d2916"
   }
 }
 
@@ -122,6 +129,7 @@ resource "aws_internet_gateway" "web_igw" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "ebfef124-b23d-47b1-abd5-010ea802848e"
   }
 }
 
@@ -130,6 +138,7 @@ resource "aws_route_table" "web_rtb" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "65754fe0-da94-4bab-b7a5-1f434cfec28d"
   }
 }
 
@@ -159,6 +168,7 @@ resource "aws_network_interface" "web-eni" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "66fe30b0-3b65-423a-9c81-ff7abe5d1880"
   }
 }
 
@@ -169,7 +179,8 @@ resource "aws_flow_log" "vpcflowlogs" {
   traffic_type         = "ALL"
   vpc_id               = aws_vpc.web_vpc.id
   tags = {
-    env = "dev"
+    env       = "dev"
+    yor_trace = "0bec3099-eb26-4a9d-984d-de1871d4a1bb"
   }
 }
 
@@ -179,6 +190,7 @@ resource "aws_s3_bucket" "flowbucket" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_trace   = "f2da9628-d703-4a14-bb16-3b3414bce11e"
   }
 }
 
