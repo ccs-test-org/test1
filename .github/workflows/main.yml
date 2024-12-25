@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   code-security:
-    name: Prisma Cloud Application Security (CAS) Scanning
+    name: Checkov (CAS) Scanning
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
