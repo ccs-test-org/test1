@@ -14,8 +14,8 @@ jobs:
         with:
           directory: .
           soft_fail: true
-        output_format: cli,sarif
-          output_file_path: console,results.sarif
+        output_format: cli, sarif
+          output_file_path: results.sarif
         # env:
           # PRISMA_API_URL: https://api2.prismacloud.io
         # with:
