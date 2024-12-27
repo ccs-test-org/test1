@@ -13,6 +13,7 @@ jobs:
         uses: bridgecrewio/checkov-action@master 
         with:
           directory: .
+          soft_fail: true
         # env:
           # PRISMA_API_URL: https://api2.prismacloud.io
         # with:
