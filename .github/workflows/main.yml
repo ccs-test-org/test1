@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   code-security:
-    name: Checkov (CAS) Scanning
+    name: Checkov (CAS) Scanning & Yor tagging
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
