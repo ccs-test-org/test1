@@ -9,6 +9,8 @@ resource "aws_s3_bucket" "data" {
     Name        = "data"
     env         = "prod"
     cost-center = "11010"
+    yor_name    = "data"
+    yor_trace   = "f06ec23c-e8c4-4fd3-befd-4c4337010b72"
   }
 }
 
@@ -19,6 +21,8 @@ resource "aws_s3_bucket_object" "data_object" {
   tags = {
     env         = "prod"
     cost-center = "11010"
+    yor_name    = "data_object"
+    yor_trace   = "39159d91-bdb6-4253-9f4a-8af5cb46ded2"
   }
 }
 
@@ -32,11 +36,17 @@ resource "aws_s3_bucket" "financials" {
   tags = {
     env         = "prod"
     cost-center = "11010"
+    yor_name    = "financials"
+    yor_trace   = "d6432abe-ef1c-4807-a834-e0eb68dfe210"
   }
 }
 
 resource "aws_s3_bucket" "financials_log_bucket" {
   bucket = "financials-log-bucket"
+  tags = {
+    yor_name  = "financials_log_bucket"
+    yor_trace = "1b9f4f01-74fb-4e51-8786-be54f425a20a"
+  }
 }
 
 
@@ -45,7 +55,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "financials_log_bu
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm     = "AES256"
+      sse_algorithm = "AES256"
     }
   }
 }
@@ -71,6 +81,8 @@ resource "aws_s3_bucket" "operations" {
   tags = {
     env         = "prod"
     cost-center = "11010"
+    yor_name    = "operations"
+    yor_trace   = "766247bf-45b7-4a55-b137-33dfae7eb161"
   }
 }
 
@@ -89,6 +101,8 @@ resource "aws_s3_bucket" "data_science" {
   tags = {
     env         = "prod"
     cost-center = "11010"
+    yor_name    = "data_science"
+    yor_trace   = "055e1caa-c399-4a92-9ab4-25635cc4308a"
   }
 }
 
@@ -112,5 +126,7 @@ resource "aws_s3_bucket" "logs" {
     env         = "prod"
     cost-center = "11010"
     funct       = "logging"
+    yor_name    = "logs"
+    yor_trace   = "3293d4b0-4827-4e49-b1b8-80e91865a553"
   }
 }

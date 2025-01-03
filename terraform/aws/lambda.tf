@@ -19,6 +19,8 @@ EOF
   tags = {
     env         = "dev"
     cost-center = "55010"
+    yor_name    = "iam_for_lambda"
+    yor_trace   = "94e930fe-880f-4025-9200-8d5f440d295a"
   }
 }
 
@@ -39,6 +41,8 @@ resource "aws_lambda_function" "analysis_lambda" {
   tags = {
     env         = "dev"
     cost-center = "55010"
+    yor_name    = "analysis_lambda"
+    yor_trace   = "41192f65-2aeb-4042-9b39-9fbf1e2edf19"
   }
 }
 

@@ -20,6 +20,8 @@ EOF
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_host"
+    yor_trace   = "32943d64-f5ad-4336-8993-0bf3089f5002"
   }
 }
 
@@ -31,6 +33,8 @@ resource "aws_ebs_volume" "web_host_storage" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_host_storage"
+    yor_trace   = "874246b5-e959-4c4b-9a25-555219eee1b0"
   }
 }
 
@@ -41,6 +45,8 @@ resource "aws_ebs_snapshot" "example_snapshot" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "example_snapshot"
+    yor_trace   = "61357901-2ffe-47a8-a548-47b9d37db54c"
   }
 }
 
@@ -81,6 +87,8 @@ resource "aws_security_group" "web-node" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web-node"
+    yor_trace   = "38b9f302-2993-4ce8-8422-38ac9ce7a1d9"
   }
 }
 
@@ -91,6 +99,8 @@ resource "aws_vpc" "web_vpc" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_vpc"
+    yor_trace   = "a8a597fe-18ac-4c51-aba6-0b7bc0e3cbd6"
   }
 }
 
@@ -102,6 +112,8 @@ resource "aws_subnet" "web_subnet" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_subnet"
+    yor_trace   = "3967cb35-e452-4f73-b3c9-49f60a7a9eb2"
   }
 }
 
@@ -113,6 +125,8 @@ resource "aws_subnet" "web_subnet2" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_subnet2"
+    yor_trace   = "ff6bdf0d-c0ae-4b23-a676-c5d0e55bf6a7"
   }
 }
 
@@ -122,6 +136,8 @@ resource "aws_internet_gateway" "web_igw" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_igw"
+    yor_trace   = "1b4fb2d7-0595-4a83-b407-a20704540dc4"
   }
 }
 
@@ -130,6 +146,8 @@ resource "aws_route_table" "web_rtb" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web_rtb"
+    yor_trace   = "45c0fd52-21b8-4cbf-9763-d659b9bd14d9"
   }
 }
 
@@ -159,6 +177,8 @@ resource "aws_network_interface" "web-eni" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "web-eni"
+    yor_trace   = "ef2f6055-27df-4a21-8288-e98f1319bd6f"
   }
 }
 
@@ -169,7 +189,9 @@ resource "aws_flow_log" "vpcflowlogs" {
   traffic_type         = "ALL"
   vpc_id               = aws_vpc.web_vpc.id
   tags = {
-    env = "dev"
+    env       = "dev"
+    yor_name  = "vpcflowlogs"
+    yor_trace = "15235b34-126f-438b-9470-1d3943e8426b"
   }
 }
 
@@ -179,6 +201,8 @@ resource "aws_s3_bucket" "flowbucket" {
   tags = {
     env         = "dev"
     cost-center = "44010"
+    yor_name    = "flowbucket"
+    yor_trace   = "ac63efb9-a8d3-4cc2-8b87-573400d350f7"
   }
 }
 
