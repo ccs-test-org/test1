@@ -65,5 +65,3 @@ resource "azurerm_network_security_group" "ccs_test1_nsg1" {
     yor_trace = "f5200269-62ad-4be3-88af-28fe2e474da7"
   }
 }
-
-

@@ -22,6 +22,3 @@ resource "oci_objectstorage_bucket" "secretsquirrel" {
     yor_name             = "secretsquirrel"
   }
 }
-
-
-

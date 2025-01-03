@@ -44,4 +44,3 @@ resource "aws_neptune_cluster_snapshot" "default" {
   db_cluster_identifier          = aws_neptune_cluster.default.id
   db_cluster_snapshot_identifier = "resourcetestsnapshot1"
 }
-

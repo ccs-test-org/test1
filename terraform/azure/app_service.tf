@@ -64,4 +64,3 @@ resource azurerm_app_service "app-service2" {
     yor_name             = "app-service2"
   }
 }
-
